@@ -1,0 +1,1 @@
+Mini project which shows how many grades was inputted, first grade and last grade, using arrays
