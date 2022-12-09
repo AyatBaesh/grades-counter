@@ -12,9 +12,11 @@
         <h1>Classroom</h1>
     </nav>
     <main class="main-container">
-        <label for="#grade">Enter grade</label>
-        <input id="grade" type = "number" min="0" max="20" required placeholder="Grade(0 - 20)">
-        <input id="add-button" class="input-button" type = "button" value="Add">
+        <form id="grades-form">
+            <label for="#grade">Enter grade</label>
+            <input id="grade" type = "number" min="0" max="20" required placeholder="Grade(0 - 20)">
+            <input id="add-button"  class="input-button" type = "submit" value="Add">
+        </form>
 
         <table class="grades table">
             <thead>
@@ -23,7 +25,7 @@
                     <th width = "33%">Firs submitted grade</th>
                     <th>Last submitted grade</th>
                 </tr>
-                <tbody></tbody>
+                <tbody id ="tbody"></tbody>
         </thead>
         </table>
     </main>
