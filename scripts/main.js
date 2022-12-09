@@ -1,23 +1,45 @@
-import {getNumberOfGrades, getFirstGrade, getLastGrade } from "./stats.js"
+import {getNumberOfGrades, getAverageGrade, highestGrade, tooEasy, amountOfGrades, resultsToCSV } from "./stats.js"
 
 let grades = [];
-let tbody = document.querySelector("#tbody");
+let names = [];
+let testResults = [[]];
+let tbodyGrades = document.querySelector("#tbodyGrades");
+let tbodyResults = document.querySelector("#tbodyResults");
 let gradesForm = document.getElementById("grades-form");
-let input = document.querySelector("#grade");
+let gradeInput = document.querySelector("#grade");
+let nameInput = document.querySelector("#student-name");
+let gradesAmount = document.querySelector("#grade-to-check")
 
-function render(grades){//function to update table data
-    tbody.innerHTML =  `<tr> 
+function renderGrades(grades){//function to update table data
+    tbodyGrades.innerHTML =  `<tr> 
         <td>${getNumberOfGrades(grades)}</td>
-        <td>${getFirstGrade(grades)}</td>
-        <td>${getLastGrade(grades)}</td>`
-    }
+        <td>${getAverageGrade(grades)}</td>
+        <td>${highestGrade(grades)}</td>
+        </tr>`
+}
+function renderResults(testResults,grades){
+    tbodyResults.innerHTML =  `<tr> 
+    <td>${tooEasy(grades)}</td>
+    <td>${amountOfGrades(grades)}</td>
+    <td>${resultsToCSV(testResults)}</td>
+    </tr>`
+}
 
+gradesAmount.addEventListener("change", () =>{
+    renderResults(testResults,grades,names);
+});
 gradesForm.addEventListener('submit', event => {//adding new grade to the grades[] and calling render() to update the table
     event.preventDefault();//prevents data refreshing
-    grades.push(input.value);
-    input.value="";
-    render(grades);
-    // console.log(`grades = ${grades}`);
+    grades.push(gradeInput.value);
+    names.push(nameInput.value);
+    testResults.push([nameInput.value, gradeInput.value]);
+    // testResults.pop();
+    nameInput.value = "";
+    gradeInput.value="";
+    console.log(`testResults = ${testResults}`)
+    renderGrades(grades);
+    renderResults(testResults,grades,names);
+    console.log(`grades = ${grades}`);
 
 })
 

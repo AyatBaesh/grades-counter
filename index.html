@@ -13,8 +13,10 @@
     </nav>
     <main class="main-container">
         <form id="grades-form">
+            <label for = "#student-name">Enter student's name</label>
+            <input id="student-name" class ="input-field" type ="text" required placeholder="Name">
             <label for="#grade">Enter grade</label>
-            <input id="grade" type = "number" min="0" max="20" required placeholder="Grade(0 - 20)">
+            <input id="grade" class ="input-field" type = "number" min="0" max="20" required placeholder="grade(0 - 20)">
             <input id="add-button"  class="input-button" type = "submit" value="Add">
         </form>
 
@@ -22,10 +24,42 @@
             <thead>
                 <tr>
                     <th width = "33%">Number of tests taken</th>
-                    <th width = "33%">Firs submitted grade</th>
-                    <th>Last submitted grade</th>
+                    <th width = "33%">Average grade</th>
+                    <th>Highest grade achieved</th>
                 </tr>
-                <tbody id ="tbody"></tbody>
+                <tbody id ="tbodyGrades"></tbody>
+        </thead>
+        </table>
+        <table class="results table">
+            <thead>
+                <tr>
+                    <th width = "33%">Test was too easy?</th>
+                    <th width = "33%">How many 
+                        <select id="grade-to-check">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select> points was scored?</th>
+                    <th>Results CSV format</th>
+                </tr>
+                <tbody id ="tbodyResults"></tbody>
         </thead>
         </table>
     </main>
